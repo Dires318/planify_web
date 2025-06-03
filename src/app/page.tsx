@@ -14,7 +14,7 @@ export default function Home() {
         className="text-center"
       >
         <h1 className="text-4xl md:text-6xl font-bold text-purple-600 mb-4">
-          Welcome to MyPlanJoy
+          Welcome to Planify
         </h1>
         <p className="text-xl md:text-2xl text-gray-600 mb-8">
           Your friendly planner that cheers you on

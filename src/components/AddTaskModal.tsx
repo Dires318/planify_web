@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useForm } from 'react-hook-form'
+import { Resolver, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import api from '@/lib/axios'
@@ -30,9 +30,8 @@ type FormData = yup.InferType<typeof schema>
 
 export default function AddTaskModal({ isOpen, onClose, categories, onTaskAdded }: AddTaskModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({
-    resolver: yupResolver(schema)
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({
+    resolver: yupResolver(schema) as Resolver<FormData>
   })
 
   const onSubmit = async (data: FormData) => {

@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import api from '@/lib/axios'
 
 // Validation schema
 const schema = yup.object({
@@ -51,20 +52,18 @@ export default function SignUp() {
 
   const onSubmit = async (data: SignUpFormData) => {
     try {
-      const response = await fetch('/api/auth/register/', {
-        method: 'POST',
+      const response = await api.post('/api/auth/register/', data, {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
-        credentials: 'include'
+        withCredentials: true
       })
 
-      if (!response.ok) {
+      if (response.status !== 200) {
         throw new Error('Registration failed')
       }
 
-      const result = await response.json()
+      const result = response.data
       router.push('/dashboard')
     } catch (error) {
       console.error('Registration error:', error)
