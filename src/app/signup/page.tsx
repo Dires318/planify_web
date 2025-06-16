@@ -27,8 +27,8 @@ const schema = yup.object({
   confirmPassword: yup.string()
     .required('Please confirm your password')
     .oneOf([yup.ref('password')], 'Passwords must match'),
-  firstName: yup.string().required('First name is required'),
-  lastName: yup.string().required('Last name is required')
+  first_name: yup.string().required('First name is required'),
+  last_name: yup.string().required('Last name is required')
 }).required()
 
 type SignUpFormData = {
@@ -36,8 +36,8 @@ type SignUpFormData = {
   email: string
   password: string
   confirmPassword: string
-  firstName: string
-  lastName: string
+  first_name: string
+  last_name: string
 }
 
 export default function SignUp() {
@@ -97,14 +97,14 @@ export default function SignUp() {
                 <input
                   id="firstName"
                   type="text"
-                  {...register('firstName')}
+                  {...register('first_name')}
                   className={`appearance-none rounded-md relative block w-full px-3 py-2 border ${
-                    errors.firstName ? 'border-red-300' : 'border-gray-300'
+                    errors.first_name ? 'border-red-300' : 'border-gray-300'
                   } placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm`}
                   placeholder="First Name"
                 />
-                {errors.firstName && (
-                  <p className="mt-1 text-sm text-red-600">{errors.firstName.message}</p>
+                {errors.first_name && (
+                  <p className="mt-1 text-sm text-red-600">{errors.first_name.message}</p>
                 )}
               </div>
               <div>
@@ -112,14 +112,14 @@ export default function SignUp() {
                 <input
                   id="lastName"
                   type="text"
-                  {...register('lastName')}
+                  {...register('last_name')}
                   className={`appearance-none rounded-md relative block w-full px-3 py-2 border ${
-                    errors.lastName ? 'border-red-300' : 'border-gray-300'
+                    errors.last_name ? 'border-red-300' : 'border-gray-300'
                   } placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm`}
                   placeholder="Last Name"
                 />
-                {errors.lastName && (
-                  <p className="mt-1 text-sm text-red-600">{errors.lastName.message}</p>
+                {errors.last_name && (
+                  <p className="mt-1 text-sm text-red-600">{errors.last_name.message}</p>
                 )}
               </div>
             </div>
