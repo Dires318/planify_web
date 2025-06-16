@@ -86,7 +86,7 @@ export default function CategoryManager({
 
   return (
     <div className="bg-white rounded-xl shadow-sm p-6">
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between gap-2 items-center mb-4">
         <h2 className="text-lg font-semibold text-gray-900">Categories</h2>
         <button
           onClick={() => setIsModalOpen(true)}
